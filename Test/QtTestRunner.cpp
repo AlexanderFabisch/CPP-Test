@@ -116,9 +116,13 @@ void QtTestRunnerWindow::addResult(QTreeWidgetItem* parent, TestResult& testResu
 QtTestRunner::QtTestRunner(int argc, char** argv) : application(argc, argv)
 {}
 
+QtTestRunner::~QtTestRunner()
+{
+  window.testCase->testResult.detach(this);
+}
+
 void QtTestRunner::run(TestCase& testCase)
 {
-  testCase.testResult.detachAll();
   testCase.testResult.attach(this);
   window.setTestCase(&testCase);
   window.show();

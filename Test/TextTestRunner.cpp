@@ -9,11 +9,11 @@ TextTestRunner::TextTestRunner(bool verbose)
 
 void TextTestRunner::run(TestCase& testCase)
 {
-  testCase.testResult.detachAll();
   testCase.testResult.attach(this);
   Stopwatch sw;
   testCase.run();
   std::cout << sw.stop() << " mus" << std::endl;
+  testCase.testResult.detach(this);
 }
 
 void TextTestRunner::update(Observable* observable)

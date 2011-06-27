@@ -10,11 +10,6 @@ void Observable::detach(Observer* observer)
   observers.remove(observer);
 }
 
-void Observable::detachAll()
-{
-  observers.clear();
-}
-
 void Observable::notify()
 {
   for(std::list<Observer*>::iterator observer = observers.begin(); observer != observers.end(); observer++)

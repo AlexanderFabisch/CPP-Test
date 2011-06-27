@@ -43,8 +43,5 @@ int main(int argc, char** argv)
   QtTestRunner qtr(argc, argv);
   qtr.run(ts);
 
-  QtTestRunner qtr2(argc, argv);
-  qtr2.run(ts);
-
   return 0;
 }
