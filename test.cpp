@@ -5,14 +5,30 @@
 
 class ExampleTestCase : public TestCase
 {
+  void setUp() { /* do some stuff here before each test function */ }
+  void tearDown() { /* do some stuff here after each test function */ }
+
   void run()
   {
-    RUN(ExampleTestCase, testFunction);
+    RUN(ExampleTestCase, testFunction1);
+    RUN(ExampleTestCase, testFunction2);
   }
 
-  void testFunction()
+  void testFunction1()
   {
     ASSERT(false);
+    double a = 0.0, b = 0.5;
+    ASSERT_EQUALS(a, b);
+    ASSERT_NOT_EQUALS(a, b);
+    ASSERT_EQUALS_DELTA(a, b, 1.0);
+    ASSERT_WITHIN(a, -1.0, 1.0);
+  }
+
+  void testFunction2()
+  {
+    double c = 0.0;
+    ASSERT(isNaN(c/c));
+    ASSERT(isInf(c));
   }
 };
 
