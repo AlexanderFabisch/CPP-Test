@@ -37,11 +37,14 @@ int main(int argc, char** argv)
   TestSuite ts("FrameworkTests");
   ts.addTestCase(new ExampleTestCase);
 
+  TextTestRunner ttr(false);
+  ttr.run(ts);
+
   QtTestRunner qtr(argc, argv);
   qtr.run(ts);
 
-  TextTestRunner ttr(false);
-  ttr.run(ts);
+  QtTestRunner qtr2(argc, argv);
+  qtr2.run(ts);
 
   return 0;
 }

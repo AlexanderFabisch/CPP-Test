@@ -10,6 +10,7 @@ class Observable
 public:
   void attach(Observer* observer);
   void detach(Observer* observer);
+  void detachAll();
   void notify();
 };
 

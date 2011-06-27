@@ -9,6 +9,7 @@ TextTestRunner::TextTestRunner(bool verbose)
 
 void TextTestRunner::run(TestCase& testCase)
 {
+  testCase.testResult.detachAll();
   testCase.testResult.attach(this);
   Stopwatch sw;
   testCase.run();
@@ -27,7 +28,6 @@ std::string TextTestRunner::testReportLast(TestResult& testResult, bool verbose,
   for(int i = 0; i < nested; i++)
     tabStream << "\t";
   std::string tabs = tabStream.str();
-
 
   std::stringstream report;
 

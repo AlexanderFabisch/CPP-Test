@@ -118,7 +118,7 @@ QtTestRunner::QtTestRunner(int argc, char** argv) : application(argc, argv)
 
 void QtTestRunner::run(TestCase& testCase)
 {
-  testCase.testResult.detach(this);
+  testCase.testResult.detachAll();
   testCase.testResult.attach(this);
   window.setTestCase(&testCase);
   window.show();
