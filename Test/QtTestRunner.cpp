@@ -1,4 +1,10 @@
 #include "QtTestRunner.h"
+#include <QApplication>
+#include <QMenuBar>
+#include <QGridLayout>
+#include <QPushButton>
+#include <QTreeWidget>
+#include <QProgressBar>
 
 QtTestRunnerWindow::QtTestRunnerWindow()
     : centralWidget(new QWidget(this)),
@@ -113,20 +119,24 @@ void QtTestRunnerWindow::addResult(QTreeWidgetItem* parent, TestResult& testResu
   tree->resizeColumnToContents(1);
 }
 
-QtTestRunner::QtTestRunner(int argc, char** argv) : application(argc, argv)
+QtTestRunner::QtTestRunner(int argc, char** argv)
+    : application(new QApplication(argc, argv)),
+      window(new QtTestRunnerWindow)
 {}
 
 QtTestRunner::~QtTestRunner()
 {
-  window.testCase->testResult.detach(this);
+  window->testCase->testResult.detach(this);
+  delete window;
+  delete application;
 }
 
 void QtTestRunner::run(TestCase& testCase)
 {
   testCase.testResult.attach(this);
-  window.setTestCase(&testCase);
-  window.show();
-  application.exec();
+  window->setTestCase(&testCase);
+  window->show();
+  application->exec();
 }
 
 void QtTestRunner::update(Observable* observable)
@@ -135,5 +145,5 @@ void QtTestRunner::update(Observable* observable)
   std::list<TestResult>::iterator r = testResult.testResults.begin();
   std::list<std::string>::iterator n = testResult.testResultNames.begin();
   for(int i = 0; i < testResult.lastInserted; i++, r++, n++)
-    window.addResult(*n, *r);
+    window->addResult(*n, *r);
 }

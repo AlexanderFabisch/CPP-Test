@@ -2,15 +2,16 @@
 #define QTTESTRUNNER_H
 
 #include "TestRunner.h"
-
-#include <QApplication>
 #include <QMainWindow>
-#include <QMenuBar>
-#include <QGridLayout>
-#include <QPushButton>
-#include <QTreeWidget>
-#include <QProgressBar>
+#include <QObject>
 
+class QApplication;
+class QMenuBar;
+class QGridLayout;
+class QPushButton;
+class QTreeWidget;
+class QTreeWidgetItem;
+class QProgressBar;
 class QtTestRunner;
 
 class QtTestRunnerWindow : public QMainWindow
@@ -41,8 +42,8 @@ private slots:
 
 class QtTestRunner : public TestRunner
 {
-  QApplication application;
-  QtTestRunnerWindow window;
+  QApplication* application;
+  QtTestRunnerWindow* window;
 public:
   QtTestRunner(int argc, char** argv);
   ~QtTestRunner();
