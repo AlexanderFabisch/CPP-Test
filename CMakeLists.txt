@@ -27,4 +27,4 @@ add_library(unit
 )
 
 add_executable(CPPTest test.cpp)
-target_link_libraries(CPPTest unit ${QT_LIBRARIES} qwt-qt4)
+target_link_libraries(CPPTest unit ${QT_LIBRARIES})
