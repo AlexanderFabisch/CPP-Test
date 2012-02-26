@@ -1,7 +1,9 @@
 #include "Test/TestSuite.h"
 #include "Test/TestCase.h"
-#include "Test/QtTestRunner.h"
 #include "Test/TextTestRunner.h"
+#ifdef CPPTEST_USE_QT
+#include "Test/QtTestRunner.h"
+#endif
 
 class ExampleTestCase : public TestCase
 {
@@ -40,8 +42,10 @@ int main(int argc, char** argv)
   TextTestRunner ttr(false);
   ttr.run(ts);
 
+#ifdef CPPTEST_USE_QT
   QtTestRunner qtr(argc, argv);
   qtr.run(ts);
+#endif
 
   return 0;
 }
