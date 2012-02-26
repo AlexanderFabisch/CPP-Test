@@ -5,7 +5,6 @@ find_package(Qt4)
 
 set(INCLUDE_DIRS ".")
 set(COMPILE_DEFS "-Wall -ggdb")
-set(LIBRARIES "")
 
 if(QT_FOUND)
   message(STATUS "Found Qt")
