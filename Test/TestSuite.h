@@ -11,7 +11,7 @@ class TestSuite : public TestCase
   std::list<TestCase*> testCases;
 public:
   TestSuite(const char* name) : name(name) {}
-  ~TestSuite();
+  virtual ~TestSuite();
   virtual void run();
   virtual void reset();
   void addTestCase(TestCase* testCase);

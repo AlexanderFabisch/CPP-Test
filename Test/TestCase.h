@@ -18,6 +18,7 @@ class TestCase
 public:
   TestResult testResult;
 
+  virtual ~TestCase() {}
   virtual void setUp() {}
   virtual void tearDown() {}
   virtual void run() = 0;
