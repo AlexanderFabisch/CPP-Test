@@ -8,7 +8,7 @@ class TextTestRunner : public TestRunner
   bool verbose;
 public:
   TextTestRunner(bool verbose);
-  void run(TestCase& testCase);
+  int run(TestCase& testCase);
   void update(Observable* observable);
 private:
   /** Generates the report of the last added results. */

@@ -7,13 +7,14 @@ TextTestRunner::TextTestRunner(bool verbose)
     : verbose(verbose)
 {}
 
-void TextTestRunner::run(TestCase& testCase)
+int TextTestRunner::run(TestCase& testCase)
 {
   testCase.testResult.attach(this);
   Stopwatch sw;
   testCase.run();
   std::cout << sw.stop() << " mus" << std::endl;
   testCase.testResult.detach(this);
+  return testCase.testResult.total - testCase.testResult.successful;
 }
 
 void TextTestRunner::update(Observable* observable)

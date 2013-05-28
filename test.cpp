@@ -40,12 +40,12 @@ int main(int argc, char** argv)
   ts.addTestCase(new ExampleTestCase);
 
   TextTestRunner ttr(false);
-  ttr.run(ts);
+  int result = ttr.run(ts);
 
 #ifdef CPPTEST_USE_QT
   QtTestRunner qtr(argc, argv);
-  qtr.run(ts);
+  result += qtr.run(ts);
 #endif
 
-  return 0;
+  return result;
 }

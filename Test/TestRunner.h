@@ -7,7 +7,7 @@
 class TestRunner : public Observer
 {
 public:
-  virtual void run(TestCase& testCase) = 0;
+  virtual int run(TestCase& testCase) = 0;
 };
 
 #endif

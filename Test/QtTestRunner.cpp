@@ -131,12 +131,13 @@ QtTestRunner::~QtTestRunner()
   delete application;
 }
 
-void QtTestRunner::run(TestCase& testCase)
+int QtTestRunner::run(TestCase& testCase)
 {
   testCase.testResult.attach(this);
   window->setTestCase(&testCase);
   window->show();
   application->exec();
+  return testCase.testResult.total - testCase.testResult.successful;
 }
 
 void QtTestRunner::update(Observable* observable)

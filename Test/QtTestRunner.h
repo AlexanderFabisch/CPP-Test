@@ -47,7 +47,7 @@ class QtTestRunner : public TestRunner
 public:
   QtTestRunner(int argc, char** argv);
   ~QtTestRunner();
-  virtual void run(TestCase& testCase);
+  virtual int run(TestCase& testCase);
   virtual void update(Observable* observable);
 };
 
