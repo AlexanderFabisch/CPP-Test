@@ -10,7 +10,7 @@ AssertResult::AssertResult(const char* file, int line)
 
 void TestResult::append(TestResult& testResult)
 {
-  if(testResult.testResultNames.size() > 0)
+  if(!testResult.testResultNames.empty())
   {
     lastInserted = 1;
     std::string name = testResult.testResultNames.front();
@@ -18,7 +18,8 @@ void TestResult::append(TestResult& testResult)
     if(s != std::string::npos)
     {
       name = name.substr(0, s);
-      for(std::list<std::string>::iterator n = testResult.testResultNames.begin(); n != testResult.testResultNames.end(); n++)
+      for(std::list<std::string>::iterator n = testResult.testResultNames.begin();
+          n != testResult.testResultNames.end(); ++n)
         if(n->size() > s)
           *n = n->substr(s+1);
     }

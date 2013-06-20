@@ -93,7 +93,7 @@ void QtTestRunnerWindow::addResult(QTreeWidgetItem* parent, TestResult& testResu
 {
   std::list<TestResult>::iterator r = testResult.testResults.begin();
   std::list<std::string>::iterator n = testResult.testResultNames.begin();
-  for(; r != testResult.testResults.end(); r++, n++)
+  for(; r != testResult.testResults.end(); ++r, ++n)
   {
     QStringList content;
     content << QString(n->c_str()) << QString::number(r->successful) + "/" + QString::number(r->total) << "";
@@ -104,7 +104,7 @@ void QtTestRunnerWindow::addResult(QTreeWidgetItem* parent, TestResult& testResu
     addResult(item, *r);
   }
   std::list<AssertResult>::iterator a = testResult.assertResults.begin();
-  for(; a != testResult.assertResults.end(); a++)
+  for(; a != testResult.assertResults.end(); ++a)
   {
     QStringList content;
     content << QString(a->success ? "Success" : "Failure") << QString(a->file.c_str()) + QString("(") + QString::number(a->line) + QString(")") << QString(a->assertion.c_str());

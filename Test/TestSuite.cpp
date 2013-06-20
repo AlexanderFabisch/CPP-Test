@@ -2,7 +2,7 @@
 
 TestSuite::~TestSuite()
 {
-  for(std::list<TestCase*>::iterator tc = testCases.begin(); tc != testCases.end(); tc++)
+  for(std::list<TestCase*>::iterator tc = testCases.begin(); tc != testCases.end(); ++tc)
     delete *tc;
   testCases.clear();
 }
@@ -10,7 +10,7 @@ TestSuite::~TestSuite()
 void TestSuite::run()
 {
   reset();
-  for(std::list<TestCase*>::iterator tc = testCases.begin(); tc != testCases.end(); tc++)
+  for(std::list<TestCase*>::iterator tc = testCases.begin(); tc != testCases.end(); ++tc)
   {
     (*tc)->setUp();
     (*tc)->run();
@@ -22,7 +22,7 @@ void TestSuite::run()
 void TestSuite::reset()
 {
   TestCase::reset();
-  for(std::list<TestCase*>::iterator tc = testCases.begin(); tc != testCases.end(); tc++)
+  for(std::list<TestCase*>::iterator tc = testCases.begin(); tc != testCases.end(); ++tc)
     (*tc)->reset();
 }
 
