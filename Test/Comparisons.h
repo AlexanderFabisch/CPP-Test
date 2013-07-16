@@ -6,19 +6,19 @@
 template<class T>
 bool equals(T a, T b, T delta)
 {
-  return fabs(a-b) <= delta;
+  return std::fabs(a-b) <= delta;
 }
 
 template<class T>
 bool isNaN(T value)
 {
-  return isnan(value);
+  return std::isnan(value);
 }
 
 template<class T>
 bool isInf(T value)
 {
-  return isinf(value);
+  return std::isinf(value);
 }
 
 #endif
